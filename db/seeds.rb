@@ -2,6 +2,8 @@ Watchlist.destroy_all
 User.destroy_all
 Movie.destroy_all
 
+User.create(name: user_name)
+
 Movie.create(title: "The Shawshank Redemption", year: 1994, rating: 90, genre: 'Drama')
 Movie.create(title: "GoodFellas", year: 1990, rating: 96, genre: 'Drama')
 Movie.create(title: "The Pianist", year: 2002, rating: 95, genre: 'Drama')

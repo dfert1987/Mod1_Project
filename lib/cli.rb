@@ -4,58 +4,129 @@ class Cli
         @user = user
     end
 
-#     def welcome_user
-#         puts "Welcome #{user.name}!"
-#         app_start
-#     end
+    def welcome_user
+        puts "Welcome #{user.name}!"
+        app_start
+    end
 
-#     def app_start
-#         puts "Which type of movie would you like to watch, Comedy, Action, Drama, or Horror?"
-#         user_choice = gets.chomp.downcase
-#         genre_choices(user_choice)
-# end
+     def app_start
+        puts "Which type of movie would you like to watch, Comedy, Action, Drama, or Horror?"
+        user_choice = gets.chomp.downcase 
+        genre_choices(user_choice)
 
-#     def genre_choices(choice)
-#         if choice == 'comedy'
-#             comedy_movies = Movie.where(genre: 'Comedy')
-#             comedy_movie_titles = comedy_movies.map {|movie| movie[:title]}
-#             puts "Sure, it's important to laugh! Choose one of these knee-slappers to learn more."
-#             puts comedy_movie_titles
-#         #LIST OF COMEDY OPTIONS
+     end
 
-#         elsif choice == 'drama'
-#             drama_movies = Movie.where(genre: 'Drama')
-#             drama_movie_titles = drama_movies.pluck(:title)
-#             drama_by_rating = (drama_movies.sort_by &:rating).reverse
-#             drama_rating_top_three = drama_by_rating.first(3)
-#             drama_rating_titles = drama_rating_top_three.pluck(:title)
+     def genre_choices(choice)
 
+        if choice == 'comedy'
+        puts "Sure, let's find something funny!"
+        puts "Type 'All' to see all comedies available. For our top rated comedies type 'Top'. For our three newest comedies type 'New'. Or for our three oldest comedies type 'Old'."
+        comedy_option = gets.chomp.downcase
+        comedy_view(comedy_option)
 
-#             puts "In the mood for somethinig serious, huh? Choose one of the following to learn more."
-#             puts drama_rating_titles
+        elsif choice == 'drama'
+            puts "In the mood for something serious, huh?"
+            puts "Type 'All' to see all dramas available. For our top rated dramas type 'Top'. For our three newest dramas type 'New'. Or for our three oldest dramas type 'Old'."
+            drama_option = gets.chomp.downcase
+            drama_view(drama_option)
           
 
-       
-#         #LIST OF COMEDY OPTIONS
+         elsif choice == 'horror'
+            puts "Ooh, feeling brave?"
+            puts "Type 'All' to see all horror movies available. For our top rated horror movies type 'Top'. For our three newest horror movies type 'New'. Or for our three oldest horror movies type 'Old'."
+            horror_option = gets.chomp.downcase
+            horror_view(horror_option)
+#       
 
-#         elsif choice == 'horror'
-#             horror_movies = Movie.where(genre: 'Horror')
-#             horror_movie_titles = horror_movies.pluck(:title)
-#         puts "Feeling brave? Turn the lights our and choose one these horror favorites!"
-#         puts horror_movie_titles
-#         #LIST OF HORROR OPTIONS
+         elsif choice == 'action'
+            puts "I knew you were a thrill seeker!"
+            puts "Type 'All' to see all action movies available. For our top rated action movies type 'Top'. For our three newest action movies type 'New'. Or for our three oldest action movies type 'Old'."
+            action_option = gets.chomp.downcase
+            action_view(action_option)
 
-#         elsif choice == 'action'
-#             action_movies = Movie.where(genre: 'Action')
-#             action_movie_titles = action_movies.map {|movie| movie[:title]}
-        
-#         puts "I knew you were a thrill seeker! Choose one these options to get your fill of car chases, explosions, and more!"
-#         puts action_movie_titles
-#         #LIST OF ACTION OPTIONS
+        else 
+            puts "Not familiar with that genre. Try another one"
+             app_start
+        end
+     end
 
-#         else 
-#             puts "Not familiar with that genre. Try another one"
-#             app_start
-#         end
-#     end
+     def comedy_view(list)
+        if list == 'All'
+        puts "Here's all the comedies we have."
+
+        elsif list == 'Top'
+        puts "Here are the Top 3 rated comedies in our system."
+
+        elsif list == 'New'
+        puts "Here are the 3 newest comedies we have available."
+
+        elsif list == 'Old'
+        puts "Here are the 3 oldest comedies we have available."
+
+        else 
+            puts "Sorry, that's not a valid response."
+            app_start
+        end
+    end
 end
+
+    def drama_view(list)
+        if list == 'All'
+        puts "Here's all the dramas we have."
+
+        elsif list == 'Top'
+        puts "Here are the Top 3 rated dramas in our system."
+
+        elsif list == 'New'
+        puts "Here are the 3 newest dramas we have available."
+
+        elsif list == 'Old'
+        puts "Here are the 3 oldest dramas we have available."
+
+        else 
+            puts "Sorry, that's not a valid response."
+            app_start
+        end
+    end
+
+
+     def horror_view(list)
+        if list == 'All'
+        puts "Here's all the horror movies we have."
+
+        elsif list == 'Top'
+        puts "Here are the Top 3 rated horror movies in our system."
+
+        elsif list == 'New'
+        puts "Here are the 3 newest horror movies we have available."
+
+        elsif list == 'Old'
+        puts "Here are the 3 oldest horror movies we have available."
+
+        else 
+        puts "Sorry, that is not a valid response."
+        app_start
+        end
+    end
+
+
+    def action_view(list)
+        if list == 'All'
+        puts "Heres all the action movies we have."
+    
+        elsif list == 'Top'
+        puts "Here are the Top 3 rated action movies in our system."
+        
+        elsif list == 'New'
+        puts "Here are the 3 newest action movies we have available."
+    
+        elsif list == 'Old'
+        puts "Here are the 3 oldest action movies we have available."
+    
+        else 
+        puts "Sorry, that's not a valid response."
+        app_start
+
+     end
+    end
+
